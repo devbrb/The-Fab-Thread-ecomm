@@ -411,9 +411,6 @@ input:disabled {
 }
 /* media query */
 @media (max-width: 1023px){
-  .homepage-welcome-note .homepage-welcome-text{
-    font-size: 50px
-  }
   .homepage-offer-banner{
     height: unset;
     margin: 0;
@@ -489,14 +486,14 @@ input:disabled {
   display: block;
   color: #ffffff !important;
   font-weight: bold;
-  font-size: 67px;
+  font-size: clamp(45px, 7vw, 67px);
   margin-bottom: 15px;
   /* background: linear-gradient(90deg, #00d4ff, #7a5fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
 }
 span.text-home {
-  font-size: 30px;
+  font-size: clamp(18px, 4vw, 30px);
   color: #ffffff;
 }
 .homepage-welcome-text .fab-text{
