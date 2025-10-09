@@ -6,6 +6,7 @@ import { useCategory } from "../Category/useCategory";
 import useSEO from "../../Hooks/useSEO";
 import { usePreloadImages } from "../../Hooks/usePreloadImages";
 import { useSelector } from "react-redux";
+import ProductSkeleton from "./ProductSkeleton";
 
 const ProductBox = React.memo(function ProductBox() {
     const [imagesLoaded, setImagesLoaded] = useState();
@@ -82,7 +83,13 @@ const ProductBox = React.memo(function ProductBox() {
 
     return (
         <div className="productBox">
-            { (isProductsListLoading) ? <Spinner /> :
+            { (isProductsListLoading) ? 
+            <div className="items-row">
+                {Array.from({ length: 8 }).map((_, i) => (
+                    <ProductSkeleton key={i} />
+                ))}
+            </div>
+            :
             <div className="items-row">
                 {filteredData?.map((item) => <ProductCard key={item.id} item={item}/>)}
             </div>

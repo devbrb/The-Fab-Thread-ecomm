@@ -48,7 +48,7 @@ function ProductListingPage() {
         }
     }, [])
 
-    if(isPending || productsLoading || isProductsListLoading) return <Spinner />
+    // if(isPending || productsLoading || isProductsListLoading) return <Spinner />
 
     return (
         <div className="category-page mobile-mainContent">
