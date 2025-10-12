@@ -76,14 +76,14 @@ const ProductBox = React.memo(function ProductBox() {
         [productData, productsList, paramsFilteredData, filteredProducts]
     );
 
-    // useEffect(() => {
-    //     if(filteredData)
-    //         preloadImages(filteredData).then(() => setImagesLoaded(true))
-    // }, [filteredData, preloadImages])
+    useEffect(() => {
+        if(filteredData)
+            preloadImages(filteredData).then(() => setImagesLoaded(true))
+    }, [filteredData, preloadImages])
 
     return (
         <div className="productBox">
-            { (isProductsListLoading) ? 
+            { (isProductsListLoading || !imagesLoaded) ? 
             <div className="items-row">
                 {Array.from({ length: 8 }).map((_, i) => (
                     <ProductSkeleton key={i} />
