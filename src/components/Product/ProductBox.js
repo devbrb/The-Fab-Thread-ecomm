@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import ProductSkeleton from "./ProductSkeleton";
 
 const ProductBox = React.memo(function ProductBox() {
-    const [imagesLoaded, setImagesLoaded] = useState();
+    const [imagesLoaded, setImagesLoaded] = useState(false);
     const [searchParams] = useSearchParams();
     const {categoryName} = useParams();
     const { preloadImages } = usePreloadImages();

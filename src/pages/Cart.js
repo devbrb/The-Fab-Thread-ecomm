@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useUser } from "../components/Authentication/useUser";
 import "../components/Cart/cart.css"
 import CartItemList from "../components/Cart/CartItemList"
 import CartPriceBox from "../components/Cart/CartPriceBox"
@@ -11,10 +9,6 @@ import { useSelector } from "react-redux";
 function Cart() {
     const {cartEntries, isEntriesLoading} = useCartEntries();
     const {user} = useSelector((store) => store.cartStates);
-
-    useEffect(() => {
-        document.querySelector(".mobile-search-box")?.classList.add("hide");
-    }, [])
 
     if(isEntriesLoading) return <Spinner />
 

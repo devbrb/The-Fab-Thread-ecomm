@@ -3,13 +3,10 @@ import OrderedItems from "../components/Orders/OrderedItems";
 import "../components/Orders/OrderSummery.css";
 import "../components/Cart/cart.css";
 import "../style/orders.css";
-import { useEffect } from "react";
 
 function OrderConfirmation() {
     const {orderId} = useParams();
-    useEffect(() => {
-        document.querySelector(".mobile-search-box")?.classList.add("hide");
-    }, [])
+
     return (
         <div className="orderSummery-page">
             <div className="order-heading-container">

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { HiHeart, HiShoppingBag, HiUser } from "react-icons/hi2"
 
 import SearchBox from "./SearchBox"
@@ -12,9 +12,12 @@ import Logo from "./Logo";
 const DesktopNav = React.memo(function DesktopNav() {
   const [isDrpDwnOpen, setIsDrpDwnOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const {cartCount} = useCartCount();
   const user = useSelector((store) => store.cartStates.user, shallowEqual);
   const {logout, userLoggingOut} = useLogout();
+
+  const isSearchAllowed = location.pathname === "/address" || location.pathname === "/payment";
   const handleDrpDwnToggle = useCallback(() => {
     setIsDrpDwnOpen(prev => !prev)
   }, [])
@@ -22,6 +25,8 @@ const DesktopNav = React.memo(function DesktopNav() {
   return (
     <nav className="nav">
       <Logo />
+        {!isSearchAllowed && 
+        <>
         <ul className="nav__list">
             <li className="nav__item">
               <button className="nav__btn nav__btn--add-recipe" onClick={() => navigate("/men")}>
@@ -69,6 +74,8 @@ const DesktopNav = React.memo(function DesktopNav() {
               </button>
             </li>
         </ul>
+        </>
+        }
     </nav>
   )
 })

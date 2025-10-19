@@ -1,5 +1,5 @@
 .header {
-    background-color: #f9f5f3;
+    background-color: transparent;
     display: flex;
     align-items: center;
     height: 60px;
@@ -9,6 +9,9 @@
     top: 0;
     left: 0;
     z-index: 1;
+}
+.header-container.notHomepage .header{
+    background-color: #f9f5f3 !important;
 }
 .logo-image{
     width: 50px;
@@ -96,7 +99,13 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.08);
   z-index: 1000;
 }
-
+.mobile-search-box .search__btn svg{
+    width: 15px;
+    height: 15px;
+}
+.mobile-search-box .search__field{
+   padding: 5px 10px;
+}
 /* Suggestion items */
 .search ul li {
   padding: 10px 12px;
@@ -219,6 +228,7 @@ nav.mobile-nav {
 }
 .mobile-header-menu-icon {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 .mobile-header-menu-icon .menu-button{

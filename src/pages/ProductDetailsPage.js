@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom"
-import { useEffect } from "react";
 
 import { useProductList } from "../components/Product/useProductList";
 import Spinner from "../components/ui/Spinner";
@@ -13,9 +12,6 @@ import PDPReview from "../components/Product/PDPReview";
 function ProductDetailsPage() {
     const {productId} = useParams();
     const {productsList, isProductsListLoading} = useProductList([]);
-    useEffect(() => {
-        document.querySelector(".mobile-search-box")?.classList.add("hide");
-    }, [])
 
     if(isProductsListLoading) return <Spinner />
 
