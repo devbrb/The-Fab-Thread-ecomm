@@ -21,7 +21,7 @@ function YourOrders() {
                     <h2>Orders & Returns</h2>
                 </div>
                 <div className="orders-list">
-                    {currentUserOrders.map((order) => <OrderBox key={order.id} order={order} />)}
+                    {currentUserOrders.map((order) => <OrderBox key={order.id} order={order} linkToDetails />)}
                 </div>
             </div>
         </div>

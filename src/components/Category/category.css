@@ -1,51 +1,95 @@
 
 .category-base-container .row-compo{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
     justify-content: center;
-    max-width: 915px;
-    margin: 0 auto 10px auto;
+    gap: clamp(14px, 2vw, 24px);
+    max-width: 1140px;
+    margin: 18px auto 20px auto;
+    padding: 0 clamp(12px, 2vw, 18px);
 }
 .category-text{
     text-align: center;
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 3.4vw, 2.3rem);
     text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 20px;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    margin-top: 24px;
     font-family: "FabThread";
+    color: #0f172a;
 }
 .column-compo{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px; 
-    padding: 10px;
-    border: 2px solid #007BFF;
-    border-radius: 18px;
-    width: 170px; 
-    background-color: #f9f9f9; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.2s;
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 22px;
+    width: 100%;
+    background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     position: relative;
+    overflow: hidden;
+}
+.column-compo::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(130deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
 }
 .column-compo img{
     width: 100%;
-    height: 170px;
-    object-fit: cover;
+    height: clamp(180px, 24vw, 250px);
+    object-fit: contain;
+    object-position: center;
+    background: #ffffff;
     border-radius: 18px;
+    transition: transform 0.35s ease;
+    display: block;
 }
 .column-compo .discount-text{
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    font-weight: 700;
+    color: #be123c;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
 }
 .column-compo .categroy-url{
     text-decoration: none;
     color: var(--color-grey-900);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px 14px 10px;
 }
 .column-compo .category-base{
-    font-size: 1rem;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    font-weight: 700;
     display: block;
+    margin-top: 10px;
+    color: #0f172a;
+    min-height: 2.5em;
+}
+.column-compo .discount-text{
+    min-height: 1.4em;
+}
+.column-compo:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.14);
+    border-color: rgba(99, 102, 241, 0.35);
+}
+.column-compo:hover::before{
+    opacity: 1;
+}
+.column-compo:hover img{
+    transform: scale(1.04);
 }
 
 
@@ -248,7 +292,7 @@
 
 /* Animation */
 .category-base-container .column-compo {
-  /* opacity: 0; */
+  opacity: 0;
   transform: translateY(10px) scale(0.98);
 }
 
@@ -264,6 +308,18 @@
 }
 
 @media (max-width: 1023px){
+    .category-base-container .row-compo{
+        grid-template-columns: repeat(3, minmax(140px, 185px));
+        justify-content: center;
+        gap: 12px;
+        padding: 0 10px;
+    }
+    .column-compo{
+        border-radius: 16px;
+    }
+    .column-compo .categroy-url{
+        padding: 8px 8px 12px 8px;
+    }
     .category-page{
         padding: 0;
     }
@@ -280,6 +336,17 @@
         padding: 0 0 10px 10px;
     }
 }
+@media (max-width: 560px){
+    .category-base-container .row-compo{
+        grid-template-columns: repeat(2, minmax(138px, 1fr));
+    }
+    .column-compo img{
+        height: 140px;
+    }
+    .column-compo .discount-text{
+        font-size: 0.82rem;
+    }
+}
 
 /* skeleton */
 .category-skeleton-card {
@@ -290,17 +357,17 @@
 
 .category-skeleton-card .skeleton-image {
   width: 100%;
-  height: 200px;
+  height: clamp(180px, 24vw, 250px);
   aspect-ratio: 1 / 1;
-  border-radius: 8px;
+  border-radius: 18px;
   background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
 }
 
 .category-skeleton-card .skeleton-text {
-  height: 14px;
-  border-radius: 4px;
+  height: 12px;
+  border-radius: 999px;
   margin-top: 8px;
   background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
   background-size: 200% 100%;

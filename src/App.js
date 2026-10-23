@@ -29,6 +29,7 @@ const Payment = React.lazy(() => import('./pages/Payment'));
 const OrderConfirmation = React.lazy(() => import('./pages/OrderConfirmation'));
 const Login = React.lazy(() => import('./pages/Login'));
 const YourOrders = React.lazy(() => import('./pages/YourOrders'));
+const OrderDetails = React.lazy(() => import('./pages/OrderDetails'));
 const Profile = React.lazy(() => import('./pages/Profile'));
 const SignUp = React.lazy(() => import('./pages/SignUp'));
 
@@ -83,6 +84,7 @@ function App() {
               <Route path='payment' element={<Payment />} />
               <Route path='orderConfirmation/:orderId' element={<OrderConfirmation />} />
               <Route path='orders' element={<YourOrders />} />
+              <Route path='orders/:orderId' element={<OrderDetails />} />
               <Route path='profile' element={<Profile />} />
             </Route>
           <Route path='login' element={<Login />} />

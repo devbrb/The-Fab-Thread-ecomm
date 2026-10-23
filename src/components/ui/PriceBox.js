@@ -24,8 +24,8 @@ const PriceBox = memo(({price, discountPrice, discount, type}) => {
     }
     return(
         <div className="item-PriceBox">
-            <span style={priceStyle} className="item-price">{formatCurrency(price)}</span>
-            <span style={discountStyle} className="item-discountPrice">{formatCurrency(discountPrice)}</span>
+            <span style={priceStyle} className="item-price">{formatCurrency(discountPrice)}</span>
+            <span style={discountStyle} className="item-discountPrice">{formatCurrency(price)}</span>
             <span style={discountStyle} className="item-discount">({discount})</span>
         </div>
     )

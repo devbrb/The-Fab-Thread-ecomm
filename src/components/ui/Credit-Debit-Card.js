@@ -37,7 +37,7 @@ function CreditDebitCard({setIsCardData}) {
                 let shouldDouble = false;
                 const cardNumber = value.replace(/\D/g, '');
 
-                for(let i = cardNumber.length - 1; i >= 0;i--){
+                for(let i = cardNumber.length - 1; i >= 0; i--){
                     let digit = parseInt(cardNumber.charAt(i), 10)
 
                     if(shouldDouble){
@@ -65,7 +65,7 @@ function CreditDebitCard({setIsCardData}) {
 
                 if(currDate > expiry){
                     sibling.classList.remove("hide");
-                    sibling.innerText = "Invalid card, please enter valid card number"
+                    sibling.innerText = "Card is expired"
                 }
             }
             const isValid = ref.current.every((inputRef) => inputRef.value.trim() !== "")

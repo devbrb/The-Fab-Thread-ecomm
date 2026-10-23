@@ -44,7 +44,7 @@ const SearchBox = React.memo(function SearchBox() {
     },500)
 
     return () => clearTimeout(timeout);
-  }, [query])
+  }, [query, isSelected, fetchSuggestionsFn])
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -108,9 +108,7 @@ const SearchBox = React.memo(function SearchBox() {
         onChange={(e) => setQuery(e.target.value)}
         ref={ref}
       />
-      {/* <button className="btn search__btn" type="submit" aria-label="Search">
-        <HiMagnifyingGlass/>
-      </button> */}
+
       {showSuggestions && <ul>
         {suggestions.map((item) => <li key={item.id} onClick={() => handleSelectSuggestion(`${item.itemType} for ${item.gender}`)}>{`${item.itemType} for ${item.gender}`}</li>)}
       </ul>}

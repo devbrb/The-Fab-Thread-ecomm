@@ -16,8 +16,8 @@ const CartPriceBox = memo(function CartPriceBox({type, setTotalCartPrice}) {
     
     const currentUserEntries = useMemo(() => cartEntries?.filter((entry) => entry.userId === user?.id), [cartEntries, user?.id]);
 
-    const priceWithoutDiscount = useMemo(() => currentUserEntries?.reduce((acc, curr) => acc + (curr.products?.discountPrice * curr.quantity || 0), 0), [currentUserEntries]);
-    const priceWithDiscount = useMemo(() => currentUserEntries?.reduce((acc, curr) => acc + (curr.products?.price * curr.quantity || 0), 0), [currentUserEntries]);
+    const priceWithoutDiscount = useMemo(() => currentUserEntries?.reduce((acc, curr) => acc + (curr.products?.price * curr.quantity || 0), 0), [currentUserEntries]);
+    const priceWithDiscount = useMemo(() => currentUserEntries?.reduce((acc, curr) => acc + (curr.products?.discountPrice * curr.quantity || 0), 0), [currentUserEntries]);
 
     const totalDiscount = priceWithoutDiscount - priceWithDiscount;
     

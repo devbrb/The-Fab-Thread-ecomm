@@ -35,6 +35,7 @@ export async function getCurrentUserOrders(){
                                 size
                                 quantity
                                 price
+                                discountPrice
                                 itemImage
                             }
                             userRating{

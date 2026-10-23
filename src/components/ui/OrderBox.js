@@ -6,15 +6,16 @@ import Rating from "./Rating";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import useInView from "../../Hooks/useInView";
+import { Link } from "react-router-dom";
 
-function OrderBox({order}) {
+function OrderBox({order, linkToDetails}) {
     const [ref, hasBeenInView] = useInView({ threshold: 0.2})
     const {id: orderId, productDetails, userRating, productId} = order;
     // const {user} = useUser();
     const {user} = useSelector((store) => store.cartStates);
     const queryClient = useQueryClient();
 
-    const {brand, itemName, size, quantity, price, itemImage} = productDetails;
+    const {brand, itemName, size, quantity, discountPrice, itemImage} = productDetails;
     
     const {giveRatingFn, isPending} = useOrderRating();
     const {setItemRatingFn, isRating} = useSetItemRating();
@@ -58,16 +59,20 @@ function OrderBox({order}) {
         })
     }
 
+    // links only image + name, so Rating clicks stay on this page
+    const DetailsLink = linkToDetails ? Link : "div";
+    const linkProps = linkToDetails ? {to: `/orders/${order.orderid}`} : {};
+
     return (
         <div className={`order-box ${hasBeenInView ? "visible" : ""}`} ref={ref}>
-            <div className="item-img-box">
+            <DetailsLink className="item-img-box" {...linkProps}>
                 <img src={itemImage ? itemImage : "imgNotFound.webp"} alt="itemImage" />
-            </div>
+            </DetailsLink>
             <div className="item-details-box">
-                <div className="cart-itemName-info">
+                <DetailsLink className="cart-itemName-info" {...linkProps}>
                     <span className="cart-brand">{brand}</span>
                     <span className="cart-name">{itemName}</span>
-                </div>
+                </DetailsLink>
                 <div className="cart-size-quantiy">
                     <div className="cart-item-size">
                         Size: {size}
@@ -77,7 +82,7 @@ function OrderBox({order}) {
                     </div>
                 </div>
                 <div className="cart-item-PriceBox">
-                    <span className="cart-item-price">Price: Rs.{price}</span>
+                    <span className="cart-item-price">Price: Rs.{discountPrice}</span>
                 </div>
                 <Rating onSetRating={setUserRating} onSetReview={setUserReview} userRating={userRating}/>
             </div>

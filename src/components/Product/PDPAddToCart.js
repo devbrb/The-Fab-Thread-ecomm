@@ -35,15 +35,15 @@ function PDPAddToCart({productData}) {
         setIsAddedToCart(false)
     }, [selectedSize])
 
-    useEffect(() => {
-        if(addreses?.length > 0){
-            const filterAddress = addreses?.filter((curr) => curr.id === selectedPin)
-            const value = selectedPin ? `${filterAddress?.[0].address.pincode} (${filterAddress?.[0].address.userName})` :
-            `${addreses?.[0].address.pincode} (${addreses?.[0].address.userName})`
-            setSelectedAddress(value);
-            setSelectedPin(!selectedPin ? addreses?.[0].id : selectedPin);       
-        }
-    }, [selectedPin, addreses])
+    // useEffect(() => {
+    //     if(addreses?.length > 0){
+    //         const filterAddress = addreses?.filter((curr) => curr.id === selectedPin)
+    //         const value = selectedPin ? `${filterAddress?.[0].address.pincode} (${filterAddress?.[0].address.userName})` :
+    //         `${addreses?.[0].address.pincode} (${addreses?.[0].address.userName})`
+    //         setSelectedAddress(value);
+    //         setSelectedPin(!selectedPin ? addreses?.[0].id : selectedPin);       
+    //     }
+    // }, [selectedPin, addreses])
 
     function handleAddToCart(){
         if(!selectedSize) return document.querySelector(".size-error").classList.remove("hide");
@@ -64,7 +64,7 @@ function PDPAddToCart({productData}) {
         }
         addToCartFn({entry: cartEntry, id: productInCart[0]?.id},
                     {onSuccess: () => {
-                            toast.success("Product added to cart")
+                            
                             setIsAddedToCart(!isAddedToCart)
                         }
                     })
@@ -138,7 +138,7 @@ function PDPAddToCart({productData}) {
             </div>
            <Modal>
                 {addreses?.length > 0 && <div className="delivery-options-box">
-                    <Modal.Open opens="select">
+                    {/* <Modal.Open opens="select">
                         <Button type="pincode">
                             <span className="pincode-val">{selectedAddress}</span>
                             <span className="change-text">Change</span>
@@ -147,7 +147,7 @@ function PDPAddToCart({productData}) {
 
                     <Modal.Window name="select">
                         <SelectPincode setSelectedPin={setSelectedPin} selectedPin={selectedPin}/>
-                    </Modal.Window>
+                    </Modal.Window> */}
 
                     <ul className="pincode-availability-list">
                         <li className="availability-row">

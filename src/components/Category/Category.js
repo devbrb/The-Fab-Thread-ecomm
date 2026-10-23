@@ -22,8 +22,10 @@ function Category({genderType}) {
                 </div>
             ) : 
             <div className="row-compo">
-                {filteredCategories?.map((category) => <CategoryCard key={category.id} category={category} />)}
-            </div>}
+                {filteredCategories?.map((category) => 
+                <CategoryCard key={category.id} category={category} />)}
+            </div>
+            }
         </div>
     )
 }

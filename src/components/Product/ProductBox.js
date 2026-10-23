@@ -86,7 +86,7 @@ const ProductBox = React.memo(function ProductBox() {
             { (isProductsListLoading || !imagesLoaded) ? 
             <div className="items-row">
                 {Array.from({ length: 8 }).map((_, i) => (
-                    <ProductSkeleton key={i} />
+                    <ProductSkeleton key={`skeleton-${i}`} />
                 ))}
             </div>
             :

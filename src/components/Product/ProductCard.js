@@ -22,8 +22,8 @@ function ProductCard({item}) {
                     <span className="item-brand">{brand}</span>
                     <span className="item-name">{itemName}</span>
                     <div className="itemPriceBox">
-                    <span className="item-price">Rs.{price}</span>
-                    <span className="item-discountPrice">Rs.{discountPrice}</span>
+                    <span className="item-price">Rs.{discountPrice}</span>
+                    <span className="item-discountPrice">Rs.{price}</span>
                     <span className="item-discount">({discount})</span>
                     </div>
                 </div>

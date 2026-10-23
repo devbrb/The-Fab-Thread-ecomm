@@ -13,6 +13,16 @@
 .header-container.notHomepage .header{
     background-color: #f9f5f3 !important;
 }
+/* Homepage header uses a transparent background, so nav text must be light */
+.header-container:not(.notHomepage) .nav__list{
+    color: #f8fafc;
+}
+.header-container:not(.notHomepage) .nav__btn{
+    color: inherit;
+}
+.header-container:not(.notHomepage) .mobile-nav{
+    color: #f8fafc;
+}
 .logo-image{
     width: 50px;
     height: 50px;
